@@ -163,11 +163,12 @@ to be displayed - the weather [forecast] is just a data associated with an offic
 The root of the application is the index of offices. Then each office can be
 viewed individually.
 
-- [ ] Routes:
-    - [ ] `offices`: an index page of offices.
-    - [ ] `offices/:id`: a specific office.
-- [ ] Controller for offices, with `index` and `show` methods.
-- [ ] Views for `index` and `show` methods.
+- [x] Routes:
+    - [x] `offices`: an index page of offices.
+    - [x] `offices/:id`: a specific office.
+- [x] Root path ("/") to match "offices"
+- [x] Controller for offices, with `index` and `show` methods.
+- [x] Views for `index` and `show` methods.
 - [ ] Error views.
 - [ ] Data structure for offices.
 - [ ] Dummy a populated offices database table using a YAML file representing
@@ -191,8 +192,24 @@ viewed individually.
       from the model.
 - [ ] Delete the YAML data file + its initialiser.
 
+### Notes: routing
 
-### Notes: Data
+The only routes that are important here are:
+
+1. `GET "/offices`", which is a index page resource that displays information 
+   on all offices, using `offices#index`, and 
+2. `GET "/offices/:id"`, which shows more detailed data for a single office,
+   using `offices#show`.
+
+This is, however, a very small app, so I've set the `root` (i.e. `"/"`) to be
+the index page, and then `"/:id"` (rather than `"offices/:id"` shows the detailed
+data.
+
+This is extremely contrictive and not scalable, but it's relatively easy to 
+change the logic in the router were the scope to widen in a real application.
+
+
+### Notes: data
 
 The data for each office is going to be stored in the database. I don't need to
 store much. 
