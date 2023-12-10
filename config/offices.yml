@@ -1,0 +1,17 @@
+# NOTE: Development tool ONLY. Delete this + config/initializers/offices.rb
+#       once the model & Db table has been added.
+- id:                 newcastle
+  municipality:       Newcastle
+  country:            UK
+  lat:                54.971250
+  lon:                -1.614590
+- id:                 stjulians
+  municipality:       St Julian's
+  country:            Malta
+  lat:                35.916160
+  lon:                14.491080
+- id:                 vancouver
+  municipality:       Vancouver
+  country:            Canada
+  lat:                49.286610
+  lon:                -123.118550

@@ -170,10 +170,10 @@ viewed individually.
 - [x] Controller for offices, with `index` and `show` methods.
 - [x] Views for `index` and `show` methods.
 - [ ] Error views.
-- [ ] Data structure for offices.
-- [ ] Dummy a populated offices database table using a YAML file representing
+- [x] Data structure for offices.
+- [x] Dummy a populated offices database table using a YAML file representing
       the office data structure.
-- [ ] Add an initializer that provides an `OFFICES` global variable, referencing
+- [x] Add an initializer that provides an `OFFICES` global variable, referencing
       the data in the YAML file, ensuring it atomises the keys to match how
       the actual data will be made available once model written & Db populated.
 - [ ] Ensure views link together on FE:
@@ -223,7 +223,6 @@ Table office {
   id           text [pk]
   municipality text
   country      text
-  tz           text
   lat          real
   lon          real
 }
@@ -236,5 +235,11 @@ In actual app, they would just be codes, making translation much easier, but tha
 is outside the scope & time constraints of the task.
 
 
+### Notes: dummying data for development
+
+Before populating an actual database, useful to be able to get content onto the
+page. So to do this, I load in a YAML file with data & provide a global variable
+(`OFFICES`) via an initializer. This can then be used in the controllers and then
+in the views for quick development before anything concrete goes in.
 
 
