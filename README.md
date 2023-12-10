@@ -48,11 +48,21 @@ This should start a rails server at http://127.0.0.1:3000
     - [ ] Add a controller that calls the OWM API & grabs data.
     - [ ] Add a view that displays that data on an HTML page.
 
+### Notes: Rails setup
+
+Note that this is a minimal install (`rails new strive_weather --minimal`) which
+strips out a large chunk of gems that have no relevance here (mailer, websockets,
+sprockets, etc).
+
+
+### Notes: Credentials
 
 The OpenWeatherMap API key is stored in the standard Rails credentials file.
 
-I don't think this is something that existed last time I touched Rails, so as a
-note mainly for myself:
+---
+
+_I don't think this is something that existed last time I touched Rails, so the
+following is a note for myself._
 
 To *edit* the credentials file (where `EDITOR` is editor of choice):
 
@@ -73,6 +83,8 @@ To *use* the value:
 Rails.application.credentials.open_weather_map[:api_key]
 ```
 
+---
+
 > **NOTE** It would probably be sensible to check for the key on server
 > initialisation, and explode immediately if it isn't found. It would probably
 > also be sensible to provide a, say, `Settings` or `AppSettings` or whatever
@@ -81,3 +93,16 @@ Rails.application.credentials.open_weather_map[:api_key]
 >
 > But given there's only one secret value I need here, just going to grab 
 > it directly in-app.
+
+### Notes: service object sketch
+
+From reading up on HTTP clients, the _de facto_ standard seems to be
+[Faraday](https://lostisland.github.io/faraday/), which fixes some problems
+with the stdlib's `Net::http`, and doesn't have some of the issues
+[HTTParty](https://github.com/jnunemaker/httparty) (the previous _de facto_
+standard client) has.
+
+So the `OpenWeatherMapService` class leverages Faraday.
+
+Note that it includes explicit methods for hitting both the endpoint specified
+in the test and the `forecast` API, I'll get back to why later on.
