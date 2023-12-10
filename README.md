@@ -42,11 +42,11 @@ This should start a rails server at http://127.0.0.1:3000
 
 - [x] Initialise basic minimal Rails install.
 - [x] Add Open Weather Map API key to the Rails user config secrets.
-- [ ] Add simple functional sketch of service object that hits Open Weather Map API.
-- [ ] Dump the data into the app:
-    - [ ] Add a route (`weathertest`)
-    - [ ] Add a controller that calls the OWM API & grabs data.
-    - [ ] Add a view that displays that data on an HTML page.
+- [x] Add simple functional sketch of service object that hits Open Weather Map API.
+- [x] Dump the data into the app:
+    - [x] Add a route (`weathertest`)
+    - [x] Add a controller that calls the OWM API & grabs data.
+    - [x] Add a view that displays that data on an HTML page.
 
 ### Notes: Rails setup
 
@@ -94,15 +94,45 @@ Rails.application.credentials.open_weather_map[:api_key]
 > But given there's only one secret value I need here, just going to grab 
 > it directly in-app.
 
+
 ### Notes: service object sketch
 
 From reading up on HTTP clients, the _de facto_ standard seems to be
 [Faraday](https://lostisland.github.io/faraday/), which fixes some problems
-with the stdlib's `Net::http`, and doesn't have some of the issues
+with the stdlib's `Net::HTTP`, and doesn't have some of the issues
 [HTTParty](https://github.com/jnunemaker/httparty) (the previous _de facto_
 standard client) has.
 
 So the `OpenWeatherMapService` class leverages Faraday.
 
-Note that it includes explicit methods for hitting both the endpoint specified
+It includes explicit methods for hitting both the endpoint specified
 in the test and the `forecast` API, I'll get back to why later on.
+
+It does not error: both methods return an object specifying the response code
+and either `:data` or an `:err` field that holds an error message. There is
+also a `:url` field for debugging purposes.
+
+---
+
+To test in console (`rails console`), example commands:
+
+```
+require './app/services/open_weather_map_service.rb'
+owm = OpenWeatherMapService.new()
+lat = 54.971250
+lon = -1.614590
+owm.current_weather_for(lat, lon)
+```
+
+---
+
+For app purposes, ther is a route (`weather_api`), a controller
+(`weather_api_controller`) with an `index` method, and an associated view. This
+prints out the current weather for the three offices.
+
+
+## Finally
+
+This fulfils the basics of the task. There are no tests or visual styling, and 
+what is printed is a raw JSON response. But is does show the current weather
+at all three locations.
