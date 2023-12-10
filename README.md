@@ -163,11 +163,12 @@ to be displayed - the weather [forecast] is just a data associated with an offic
 The root of the application is the index of offices. Then each office can be
 viewed individually.
 
-- [ ] Routes:
-    - [ ] `offices`: an index page of offices.
-    - [ ] `offices/:id`: a specific office.
-- [ ] Controller for offices, with `index` and `show` methods.
-- [ ] Views for `index` and `show` methods.
+- [x] Routes:
+    - [x] `offices`: an index page of offices.
+    - [x] `offices/:id`: a specific office.
+- [x] Root path ("/") to match "offices", then for specific offices "/:id"
+- [x] Controller for offices, with `index` and `show` methods.
+- [x] Views for `index` and `show` methods.
 - [ ] Error views.
 - [ ] Data structure for offices.
 - [ ] Dummy a populated offices database table using a YAML file representing
