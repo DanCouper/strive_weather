@@ -67,8 +67,7 @@ This should start a rails server at http://127.0.0.1:3000
 ### Notes: Rails setup
 
 Note that this is a minimal install (`rails new strive_weather --minimal`) which
-strips out a large chunk of gems that have no relevance here (mailer, websockets,
-sprockets, etc).
+strips out a large chunk of gems that have no relevance here (mailer, websockets, &c).
 
 
 ### Notes: Credentials
@@ -177,14 +176,16 @@ viewed individually.
       the data in the YAML file, ensuring it atomises the keys to match how
       the actual data will be made available once model written & Db populated.
 - [ ] Ensure views link together on FE:
-    - [ ] link for each office in index > show page for that office.
-    - [ ] link on show > go back to index.
+    - [x] link for each office in index > show page for that office.
+    - [x] link on show > go back to index.
     - [ ] Correct links on error pages that link back to the index page.
 - [ ] Add basic controller tests to explain the structuring.
 - [ ] Dummy current weather summary on office views.
 - [ ] Dummy weather forecast last updated time in views.
-- [ ] Initial sketch of CSS for site at this point (content is now extant).
-- [ ] Component for current date/time that takes into account i18n.
+- [x] Initial sketch of CSS for site at this point (content is now extant).
+- [x] Component for tabbed interface on show page showing forecast.
+- [ ] Component for live office time as user view page.
+- [ ] Time Zone information for each office in views
 - [ ] Model for offices.
 - [ ] Migration for offices.
     - [ ] Seeds for offices (identical to the dummy data).

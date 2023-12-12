@@ -13,3 +13,268 @@
  *= require_tree .
  *= require_self
  */
+
+/******************************************************************************\
+ * Core resets
+\******************************************************************************/
+
+/* 
+ * Use a more-intuitive box-sizing model.
+ * 
+ * This should be self-explanatory, but just in case you don't get why this
+ * needs to be set: https://css-tricks.com/box-sizing/
+ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Remove default margin. */
+* {
+  margin: 0;
+}
+
+/*
+ * Typographic and layout tweaks.
+ * 
+ * Line height inherits (caveat: forms), so can set a nice accessible height on
+ * the body. The default is 1.2, which is cramped and not particularly
+ * accessible.
+ * 
+ * Widths and heights I want set at a root element. Note that `dvh` and `dvw`
+ * are used to avoid issues on mobile. HOWEVER:
+ *
+ * REVIEW: `dvh`/`dvw` do have some issues, so review carefully: `vh`/`vw` may
+ * be fine, `svh`/`svw` may be better.
+ * 
+ * see: https://ishadeed.com/article/new-viewport-units/ 
+ * 
+ * REVIEW: to quote a response to Andy Bell's reset
+ * 
+ * see: https://mastodon.social/@simevidas/111088262361593466 
+ *
+ * > 100dvh is the problematic one (because it dynamically changes). 100svh has 
+ * > no issues. It’s stable. It’s the small viewport height.
+ * > P.S. I actually tried to actively find good use-cases for the dvh unit for 
+ * > the past two months, and I found nothing. The use-case for 100svh is to 
+ * > have an element fill the entire initial viewport height in mobile browsers.
+ */
+body {
+  line-height: 1.5;
+  min-width: 320px;
+  min-height: 100svh;
+  /* REVIEW: these are here to stop that annoying horizontal scroll, may not be needed tho -- need to avoid children breaking out of the box horizontally, but I think this is covered by the image max-width rules */
+  width: 100svw;
+  overflow-x: hidden;
+}
+
+/*
+ * I almost never want headings to use the default font sizing/weight.
+ */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+/*
+ * I generally want list styling removed: *if I need it* then generally I also
+ * want to control it quite carefully. But things like menus or index pages are
+ * often the most common usecase for lists, and in those cases I definitely do
+ * not want the default styling.
+ *
+ * *HOWEVER*, simply removing the list styling will remove the semantics for
+ * VoiceOver. This is a no-no for accessibility, so I'm only removing the list
+ * styling automatically if `role="list"` is explicitly added.
+ */
+ul[role="list"],
+ol[role="list"] {
+  list-style: none;
+  padding-inline: 0;
+}
+
+/* 
+ * Improve media defaults.
+ * 
+ * The elements listed here are, by default, inline. This is _rarely_ what is
+ * required. The `max-width` then ensures they will not break out of their
+ * parent elements.
+ */
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-inline-size: 100%;
+}
+
+/*
+ * Remove built-in form typography styles.
+ *
+ * Form controls do not, by default, inherit typograhic settings from parents.
+ * Whereas matching the design of the rest of the web page/app is what is
+ * generally required.
+ *
+ * The `font` shorthand is used here as it will set all relevant properties.
+ */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/*
+ * Textareas with nowt in (and without a `rows` attribute) can be tiny. This is
+ * not ideal, particularly on mobile, so
+ */
+textarea:not([rows]) {
+  min-height: 10em;
+}
+
+/* 
+ * Avoid text overflows, keep the text _inside_ boxes instead of overflowing. 
+ *
+ * The rule used in Josh Comeau's reset is `p, h1, h2, h3, h4, h5, h6`. Instead
+ * of that, I'm applying it to *all* elements, as per a recommendation from
+ * Sophie Alpert:
+ * https://x.com/sophiebits/status/1462921205359386628?s=20
+ */
+* {
+  overflow-wrap: break-word;
+  /* REVIEW: this will cause many more line breaks and the results may not be pretty, so review usage: */
+  hyphens: auto;
+}
+
+/*
+ * Add a little more space above elements that are anvhored.
+ *
+ * This *needs* to be tweaked for fixed headers, so should be a
+ * `:target:not(#MY_FIXED_HEADER_EL)` or whatever. This depends entirely on the
+ * class/id etc assigned to the app I'm currently working though so can't be put
+ * in until that's known.
+ */
+:target {
+  scroll-margin-block: 5ex;
+}
+
+/******************************************************************************\
+ * Root element settings
+\******************************************************************************/
+
+/* Root element styles, mostly relating to typography settings + colours. */
+:root {
+  /* Globals */
+  --grayscale-50: rgb(253, 253, 253);
+  --grayscale-100: rgb(251, 251, 251);
+  --grayscale-200: rgb(244, 244, 244);
+  --grayscale-300: rgb(235, 235, 235);
+  --grayscale-400: rgb(225, 225, 225);
+  --grayscale-500: rgb(212, 212, 212);
+  --grayscale-600: rgb(192, 192, 192);
+  --grayscale-700: rgb(165, 165, 165);
+  --grayscale-800: rgb(109, 109, 109);
+  --grayscale-900: rgb(100, 100, 100);
+  --grayscale-1000: rgb(90, 90, 90);
+  --grayscale-1100: rgb(29, 29, 29);
+
+  --base-background: var(--grayscale-50);
+  --base-foreground: var(--grayscale-1100);
+
+  font-family: "General Sans", system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: var(--base-foreground);
+  background-color: var(--base-background);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* Prevent adjustments of font size after orientation changes in iOS. */
+  -webkit-text-size-adjust: 100%;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --base-foreground: var(--grayscale-1100);
+    --base-background: var(--grayscale-50);
+  }
+}
+
+/******************************************************************************\
+ * Application element settings
+\******************************************************************************/
+
+/* Application root, essentially. Applied to an element on the body, rather than
+ * the body itself --  */
+.screen {
+  min-height: 100svh;
+  color: var(--base-foreground);
+  background-color: var(--base-foreground);
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr;
+  align-items: stretch;
+  justify-content: space-evenly;
+  padding: 1rem;
+}
+
+/* If the entire panel is a link, then need to wrap it in an anchor; this: */
+.office-link-wrapper {
+  color: inherit;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.panel {
+  background-color: var(--base-background);
+  font-weight: 700;
+  padding: 1rem;
+
+  * + * {
+    border-bottom: 1px solid currentColor;
+  }
+}
+
+.panel-header {
+  padding-top: 1rem;
+}
+
+.panel-title {
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.weather-summary {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  line-height: 1.2;
+}
+
+.office-weather-desc {
+  font-size: 4rem;
+}
+
+.office-weather-temp {
+  font-size: 6rem;
+  text-align: right;
+}
+
+.office-panel-controls {
+  display: flex;
+  justify-content: right;
+}
+
+.office-panel-controls-linkto {
+  text-align: right;
+  text-transform: uppercase;
+}

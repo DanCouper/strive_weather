@@ -31,3 +31,5 @@ group :development do
 end
 
 
+
+gem "importmap-rails", "~> 1.2"
