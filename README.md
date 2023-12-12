@@ -268,3 +268,29 @@ Initially, I'd wanted to use a readable string to identify the offices. Still th
 this needs to be done. To reference weather data, I initially wanted to use a
 compound primary key of `(lat, lon, timestamp)`. Still think this is the best
 approach, but Rails will actively get in the way of this.
+
+
+## Weather
+
+1. There are three offices.
+2. The open weather map *free* tier shows current weather + forecast for next 
+   four days *including today* in three-hour intervals.
+3. The open weather map API has a rate limit of 1000 req/day.
+3. If the weather displayed is not completely correct at the time it is viewed,
+   that's expected by users and is not a problem.
+4. Therefor it is not essential that the current weather for a locality be pulled
+   from the open weather map API on every user request.
+5. Instead, run a query for each office against the *forecast* endpoint when the
+   application first boots, then every three hours after that.
+6. Regardless of how many users the application has, the application will make
+   24 API requests to Open Weather Map a day.
+
+- [ ] Model for Weather
+- [ ] On application boot, make request to *forecast* API for each location.
+- [ ] Add cron functionality to rerun request at three hour intervals.
+- [ ] Intervals should be 00:00, 03:00, 06:00, 09:00, 12:00, 15:00, 18:00, 21:00
+- [ ] The job should clear any records with a timestamp > 24 hours to current time.
+- [ ] Add model call in offices controller to grab forecast.
+- [ ] Replace dummied data with actual weather data.
+
+
