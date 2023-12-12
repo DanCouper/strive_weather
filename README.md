@@ -244,3 +244,6 @@ page. So to do this, I load in a YAML file with data & provide a global variable
 in the views for quick development before anything concrete goes in.
 
 
+### Design sketch
+
+![Rough ketch of application's two screens](./strive_weather_v1_sketch.png)
