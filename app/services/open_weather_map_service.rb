@@ -6,7 +6,7 @@ class OpenWeatherMapService
     @api_key = Rails.application.credentials.open_weather_map[:api_key]
     @conn = Faraday.new(
       url: "https://api.openweathermap.org/data/2.5/",
-      params: { appid: @api_key }
+      params: { appid: @api_key, units: "metric" }
     )
   end
 

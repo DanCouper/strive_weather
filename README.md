@@ -287,6 +287,7 @@ approach, but Rails will actively get in the way of this.
 
 - [x] Fixture for API response to request for forecast data.
 - [ ] Model for Weather
+- [x] Ensure API responses are metric (missed this on first pass).
 - [ ] On application boot, make request to *forecast* API for each location.
 - [ ] Add cron functionality to rerun request at three hour intervals.
 - [ ] Intervals should be 00:00, 03:00, 06:00, 09:00, 12:00, 15:00, 18:00, 21:00
@@ -294,4 +295,60 @@ approach, but Rails will actively get in the way of this.
 - [ ] Add model call in offices controller to grab forecast.
 - [ ] Replace dummied data with actual weather data.
 
+### Notes: weather table
 
+Response data representing weather at a single point in time looks like:
+
+```json
+{
+  "dt": 1702393200,
+  "main": {
+    "temp": 7.5,
+    "feels_like": 5.38,
+    "temp_min": 7.3,
+    "temp_max": 7.5,
+    "pressure": 995,
+    "sea_level": 995,
+    "grnd_level": 990,
+    "humidity": 98,
+    "temp_kf": 0.2
+  },
+  "weather": [
+    {
+      "id": 500,
+      "main": "Rain",
+      "description": "light rain",
+      "icon": "10d"
+    }
+  ],
+  "clouds": { "all": 83 },
+  "wind": { "speed": 3.2, "deg": 99, "gust": 6.8 },
+  "visibility": 4685,
+  "pop": 0.58,
+  "rain": { "3h": 0.39 },
+  "sys": { "pod": "d" },
+  "dt_txt": "2023-12-12 15:00:00"
+},
+```
+
+The request was made to:
+
+```
+https://api.openweathermap.org/data/2.5/forecast?appid={API_KEY}&lat=54.97125&lon=-1.61459&units=metric
+```
+
+This is from the forecast response, so is one of a list of 40, and the
+location data is a field at the the same level as the list.
+
+`dt` is UNIX epoch. I do not need precision here, only date and hour.
+
+
+For a quick summary, I need `temp` and the `description` from the `weather` field.
+
+For a more in-depth summary, I want those two fields plus:
+
+- `min` `max` and `feels_like`.
+- `humidity` and `pressure`
+- probably `cloud` and `wind` details.
+
+And each row should include the longitude and latitude.
