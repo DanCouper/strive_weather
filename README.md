@@ -46,7 +46,13 @@ installed, `cd` into this project directory, and run:
 gem install
 ```
 
-Followed by:
+Once installed, seed the database:
+
+```
+rails db:seed
+```
+
+Then start:
 
 ```
 rails server
@@ -187,8 +193,8 @@ viewed individually.
 - [ ] Component for live office time as user view page.
 - [ ] Time Zone information for each office in views
 - [ ] Model for offices.
-- [ ] Migration for offices.
-    - [ ] Seeds for offices (identical to the dummy data).
+- [x] Migration for offices.
+    - [x] Seeds for offices (identical to the dummy data).
 - [ ] Replace calls to the dummied YAML-based data with calls to the actual data 
       from the model.
 - [ ] Delete the YAML data file + its initialiser.
@@ -247,3 +253,18 @@ in the views for quick development before anything concrete goes in.
 ### Design sketch
 
 ![Rough ketch of application's two screens](./strive_weather_v1_sketch.png)
+
+### Notes: model conventions vs. initial idea of data modelled in SQL
+
+Rails expects an `id` field. Things like the fancy view helpers helpers don't
+work ootb without that ID.
+
+The ID is just the autoincrementing `rowid`, it's meaningless. Using a specified*, 
+meaningful ID is slightly fiddly to set up. It should be that, but time constraints
+mean I'll just rely on the default for now, but that changes how I think about 
+the data.
+
+Initially, I'd wanted to use a readable string to identify the offices. Still think
+this needs to be done. To reference weather data, I initially wanted to use a
+compound primary key of `(lat, lon, timestamp)`. Still think this is the best
+approach, but Rails will actively get in the way of this.

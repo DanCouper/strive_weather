@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  municipality:       Newcastle
+  country:            UK
+  lat:                54.971250
+  lon:                -1.614590
+
+two:
+  municipality:       St Julian's
+  country:            Malta
+  lat:                35.916160
+  lon:                14.491080
+
+three:
+  municipality:       Vancouver
+  country:            Canada
+  lat:                49.286610
+  lon:                -123.118550

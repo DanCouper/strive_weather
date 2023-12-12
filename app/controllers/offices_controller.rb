@@ -1,9 +1,9 @@
 class OfficesController < ApplicationController
   def index
-    @offices = OFFICES
+    @offices = Office.all
   end
 
   def show
-    @office = OFFICES.find { |office| office[:id] == params[:id] }
+    @office = Office.find(params[:id])
   end
 end
