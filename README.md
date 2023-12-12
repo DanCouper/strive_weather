@@ -285,6 +285,7 @@ approach, but Rails will actively get in the way of this.
 6. Regardless of how many users the application has, the application will make
    24 API requests to Open Weather Map a day.
 
+- [x] Fixture for API response to request for forecast data.
 - [ ] Model for Weather
 - [ ] On application boot, make request to *forecast* API for each location.
 - [ ] Add cron functionality to rerun request at three hour intervals.
