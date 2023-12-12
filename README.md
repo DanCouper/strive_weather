@@ -186,18 +186,18 @@ viewed individually.
     - [x] link on show > go back to index.
     - [ ] Correct links on error pages that link back to the index page.
 - [ ] Add basic controller tests to explain the structuring.
-- [ ] Dummy current weather summary on office views.
-- [ ] Dummy weather forecast last updated time in views.
+- [x] Dummy current weather summary on office views.
+- [x] Dummy weather forecast last updated time in views.
 - [x] Initial sketch of CSS for site at this point (content is now extant).
 - [x] Component for tabbed interface on show page showing forecast.
 - [ ] Component for live office time as user view page.
 - [ ] Time Zone information for each office in views
-- [ ] Model for offices.
+- [x] Model for offices.
 - [x] Migration for offices.
     - [x] Seeds for offices (identical to the dummy data).
-- [ ] Replace calls to the dummied YAML-based data with calls to the actual data 
+- [x] Replace calls to the dummied YAML-based data with calls to the actual data 
       from the model.
-- [ ] Delete the YAML data file + its initialiser.
+- [x] Delete the YAML data file + its initialiser.
 
 ### Notes: routing
 
