@@ -20,6 +20,10 @@ gem "tzinfo-data", platforms: %i[ windows jruby ]
 # HTTP client to make external API requests
 gem "faraday", "~> 2.7"
 
+# Use import maps for the FE JS code
+gem "importmap-rails", "~> 1.2"
+
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri windows ]
@@ -28,8 +32,11 @@ end
 group :development do
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
+
+  # Use RBS to type the models
+  gem 'rbs_rails', require: false
+
+  # Add an actual typechecker
+  gem "steep", "~> 1.6"
 end
 
-
-
-gem "importmap-rails", "~> 1.2"

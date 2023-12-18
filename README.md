@@ -287,6 +287,13 @@ approach, but Rails will actively get in the way of this.
 
 - [x] Fixture for API response to request for forecast data.
 - [ ] Model for Weather
+- [ ] Refactor service object
+    - [ ] Service object should have a single method
+    - [ ] Purpose should be to make a request to OWM API, parsing the response
+          to match the structure expected by the model.
+    - [ ] Should make a request to a single endpoint, just to `forecast` or `weather`
+    - [ ] Should use `Proc#call`
+    - [ ] The model should be 
 - [x] Ensure API responses are metric (missed this on first pass).
 - [ ] On application boot, make request to *forecast* API for each location.
 - [ ] Add cron functionality to rerun request at three hour intervals.
@@ -352,3 +359,28 @@ For a more in-depth summary, I want those two fields plus:
 - probably `cloud` and `wind` details.
 
 And each row should include the longitude and latitude.
+
+So to sketch the table:
+
+```
+Table weather {
+  dt             text
+  lat            real
+  lon            real
+  name           text
+  desc           text
+  average_temp   real
+  min_temp       real
+  max_temp       real
+  feels_like     real
+  humidity       int
+  cloud_cover    int
+  wind_speed     real
+  wind_direction int
+  wind_gust      float
+
+  indexes {
+    (lat, lon, dt) [pk]
+  }
+}
+```

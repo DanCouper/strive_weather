@@ -1,0 +1,272 @@
+class Office < ::ApplicationRecord
+  extend _ActiveRecord_Relation_ClassMethods[Office, ActiveRecord_Relation, Integer]
+
+  module GeneratedAttributeMethods
+    def id: () -> Integer
+
+    def id=: (Integer) -> Integer
+
+    def id?: () -> bool
+
+    def id_changed?: () -> bool
+
+    def id_change: () -> [ Integer?, Integer? ]
+
+    def id_will_change!: () -> void
+
+    def id_was: () -> Integer?
+
+    def id_previously_changed?: () -> bool
+
+    def id_previous_change: () -> Array[Integer?]?
+
+    def id_previously_was: () -> Integer?
+
+    def id_before_last_save: () -> Integer?
+
+    def id_change_to_be_saved: () -> Array[Integer?]?
+
+    def id_in_database: () -> Integer?
+
+    def saved_change_to_id: () -> Array[Integer?]?
+
+    def saved_change_to_id?: () -> bool
+
+    def will_save_change_to_id?: () -> bool
+
+    def restore_id!: () -> void
+
+    def clear_id_change: () -> void
+
+    def municipality: () -> String?
+
+    def municipality=: (String?) -> String?
+
+    def municipality?: () -> bool
+
+    def municipality_changed?: () -> bool
+
+    def municipality_change: () -> [ String?, String? ]
+
+    def municipality_will_change!: () -> void
+
+    def municipality_was: () -> String?
+
+    def municipality_previously_changed?: () -> bool
+
+    def municipality_previous_change: () -> Array[String?]?
+
+    def municipality_previously_was: () -> String?
+
+    def municipality_before_last_save: () -> String?
+
+    def municipality_change_to_be_saved: () -> Array[String?]?
+
+    def municipality_in_database: () -> String?
+
+    def saved_change_to_municipality: () -> Array[String?]?
+
+    def saved_change_to_municipality?: () -> bool
+
+    def will_save_change_to_municipality?: () -> bool
+
+    def restore_municipality!: () -> void
+
+    def clear_municipality_change: () -> void
+
+    def country: () -> String?
+
+    def country=: (String?) -> String?
+
+    def country?: () -> bool
+
+    def country_changed?: () -> bool
+
+    def country_change: () -> [ String?, String? ]
+
+    def country_will_change!: () -> void
+
+    def country_was: () -> String?
+
+    def country_previously_changed?: () -> bool
+
+    def country_previous_change: () -> Array[String?]?
+
+    def country_previously_was: () -> String?
+
+    def country_before_last_save: () -> String?
+
+    def country_change_to_be_saved: () -> Array[String?]?
+
+    def country_in_database: () -> String?
+
+    def saved_change_to_country: () -> Array[String?]?
+
+    def saved_change_to_country?: () -> bool
+
+    def will_save_change_to_country?: () -> bool
+
+    def restore_country!: () -> void
+
+    def clear_country_change: () -> void
+
+    def lat: () -> Float?
+
+    def lat=: (Float?) -> Float?
+
+    def lat?: () -> bool
+
+    def lat_changed?: () -> bool
+
+    def lat_change: () -> [ Float?, Float? ]
+
+    def lat_will_change!: () -> void
+
+    def lat_was: () -> Float?
+
+    def lat_previously_changed?: () -> bool
+
+    def lat_previous_change: () -> Array[Float?]?
+
+    def lat_previously_was: () -> Float?
+
+    def lat_before_last_save: () -> Float?
+
+    def lat_change_to_be_saved: () -> Array[Float?]?
+
+    def lat_in_database: () -> Float?
+
+    def saved_change_to_lat: () -> Array[Float?]?
+
+    def saved_change_to_lat?: () -> bool
+
+    def will_save_change_to_lat?: () -> bool
+
+    def restore_lat!: () -> void
+
+    def clear_lat_change: () -> void
+
+    def lon: () -> Float?
+
+    def lon=: (Float?) -> Float?
+
+    def lon?: () -> bool
+
+    def lon_changed?: () -> bool
+
+    def lon_change: () -> [ Float?, Float? ]
+
+    def lon_will_change!: () -> void
+
+    def lon_was: () -> Float?
+
+    def lon_previously_changed?: () -> bool
+
+    def lon_previous_change: () -> Array[Float?]?
+
+    def lon_previously_was: () -> Float?
+
+    def lon_before_last_save: () -> Float?
+
+    def lon_change_to_be_saved: () -> Array[Float?]?
+
+    def lon_in_database: () -> Float?
+
+    def saved_change_to_lon: () -> Array[Float?]?
+
+    def saved_change_to_lon?: () -> bool
+
+    def will_save_change_to_lon?: () -> bool
+
+    def restore_lon!: () -> void
+
+    def clear_lon_change: () -> void
+
+    def created_at: () -> ActiveSupport::TimeWithZone
+
+    def created_at=: (ActiveSupport::TimeWithZone) -> ActiveSupport::TimeWithZone
+
+    def created_at?: () -> bool
+
+    def created_at_changed?: () -> bool
+
+    def created_at_change: () -> [ ActiveSupport::TimeWithZone?, ActiveSupport::TimeWithZone? ]
+
+    def created_at_will_change!: () -> void
+
+    def created_at_was: () -> ActiveSupport::TimeWithZone?
+
+    def created_at_previously_changed?: () -> bool
+
+    def created_at_previous_change: () -> Array[ActiveSupport::TimeWithZone?]?
+
+    def created_at_previously_was: () -> ActiveSupport::TimeWithZone?
+
+    def created_at_before_last_save: () -> ActiveSupport::TimeWithZone?
+
+    def created_at_change_to_be_saved: () -> Array[ActiveSupport::TimeWithZone?]?
+
+    def created_at_in_database: () -> ActiveSupport::TimeWithZone?
+
+    def saved_change_to_created_at: () -> Array[ActiveSupport::TimeWithZone?]?
+
+    def saved_change_to_created_at?: () -> bool
+
+    def will_save_change_to_created_at?: () -> bool
+
+    def restore_created_at!: () -> void
+
+    def clear_created_at_change: () -> void
+
+    def updated_at: () -> ActiveSupport::TimeWithZone
+
+    def updated_at=: (ActiveSupport::TimeWithZone) -> ActiveSupport::TimeWithZone
+
+    def updated_at?: () -> bool
+
+    def updated_at_changed?: () -> bool
+
+    def updated_at_change: () -> [ ActiveSupport::TimeWithZone?, ActiveSupport::TimeWithZone? ]
+
+    def updated_at_will_change!: () -> void
+
+    def updated_at_was: () -> ActiveSupport::TimeWithZone?
+
+    def updated_at_previously_changed?: () -> bool
+
+    def updated_at_previous_change: () -> Array[ActiveSupport::TimeWithZone?]?
+
+    def updated_at_previously_was: () -> ActiveSupport::TimeWithZone?
+
+    def updated_at_before_last_save: () -> ActiveSupport::TimeWithZone?
+
+    def updated_at_change_to_be_saved: () -> Array[ActiveSupport::TimeWithZone?]?
+
+    def updated_at_in_database: () -> ActiveSupport::TimeWithZone?
+
+    def saved_change_to_updated_at: () -> Array[ActiveSupport::TimeWithZone?]?
+
+    def saved_change_to_updated_at?: () -> bool
+
+    def will_save_change_to_updated_at?: () -> bool
+
+    def restore_updated_at!: () -> void
+
+    def clear_updated_at_change: () -> void
+  end
+  include GeneratedAttributeMethods
+
+  module GeneratedRelationMethods
+  end
+
+  class ActiveRecord_Relation < ::ActiveRecord::Relation
+    include GeneratedRelationMethods
+    include _ActiveRecord_Relation[Office, Integer]
+    include Enumerable[Office]
+  end
+
+  class ActiveRecord_Associations_CollectionProxy < ::ActiveRecord::Associations::CollectionProxy
+    include GeneratedRelationMethods
+    include _ActiveRecord_Relation[Office, Integer]
+  end
+end

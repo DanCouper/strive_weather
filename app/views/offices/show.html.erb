@@ -7,12 +7,17 @@
             <h2 class="panel-title">
                 <%= @office[:municipality] %>, <%= @office[:country] %>
             </h2>
-            <p class="office-localtime panel-subtitle"><time datetime="2023-12-07T15:51:04Z">15:51 Thursday, 7th
-                    December</time></p>
+            <p class="office-localtime panel-subtitle"><time datetime="<%= office.current_weather[:dt] %>">
+                    <%= office.current_weather[:dt] %>
+                </time></p>
         </header>
         <div class="panel-content weather-summary">
-            <p class="office-weather-desc">Raining</p>
-            <p class="office-weather-temp">7°c</p>
+            <p class="office-weather-desc">
+                <%= office.current_weather[:name] %>
+            </p>
+            <p class="office-weather-temp">
+                <%= office.current_weather[:average_temp] %>°c
+            </p>
         </div>
     </section>
 

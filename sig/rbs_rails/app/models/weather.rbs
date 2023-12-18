@@ -1,0 +1,668 @@
+class Weather < ::ApplicationRecord
+  extend _ActiveRecord_Relation_ClassMethods[Weather, ActiveRecord_Relation, Integer]
+
+  module GeneratedAttributeMethods
+    def id: () -> Integer
+
+    def id=: (Integer) -> Integer
+
+    def id?: () -> bool
+
+    def id_changed?: () -> bool
+
+    def id_change: () -> [ Integer?, Integer? ]
+
+    def id_will_change!: () -> void
+
+    def id_was: () -> Integer?
+
+    def id_previously_changed?: () -> bool
+
+    def id_previous_change: () -> Array[Integer?]?
+
+    def id_previously_was: () -> Integer?
+
+    def id_before_last_save: () -> Integer?
+
+    def id_change_to_be_saved: () -> Array[Integer?]?
+
+    def id_in_database: () -> Integer?
+
+    def saved_change_to_id: () -> Array[Integer?]?
+
+    def saved_change_to_id?: () -> bool
+
+    def will_save_change_to_id?: () -> bool
+
+    def restore_id!: () -> void
+
+    def clear_id_change: () -> void
+
+    def dt: () -> String?
+
+    def dt=: (String?) -> String?
+
+    def dt?: () -> bool
+
+    def dt_changed?: () -> bool
+
+    def dt_change: () -> [ String?, String? ]
+
+    def dt_will_change!: () -> void
+
+    def dt_was: () -> String?
+
+    def dt_previously_changed?: () -> bool
+
+    def dt_previous_change: () -> Array[String?]?
+
+    def dt_previously_was: () -> String?
+
+    def dt_before_last_save: () -> String?
+
+    def dt_change_to_be_saved: () -> Array[String?]?
+
+    def dt_in_database: () -> String?
+
+    def saved_change_to_dt: () -> Array[String?]?
+
+    def saved_change_to_dt?: () -> bool
+
+    def will_save_change_to_dt?: () -> bool
+
+    def restore_dt!: () -> void
+
+    def clear_dt_change: () -> void
+
+    def lat: () -> Float?
+
+    def lat=: (Float?) -> Float?
+
+    def lat?: () -> bool
+
+    def lat_changed?: () -> bool
+
+    def lat_change: () -> [ Float?, Float? ]
+
+    def lat_will_change!: () -> void
+
+    def lat_was: () -> Float?
+
+    def lat_previously_changed?: () -> bool
+
+    def lat_previous_change: () -> Array[Float?]?
+
+    def lat_previously_was: () -> Float?
+
+    def lat_before_last_save: () -> Float?
+
+    def lat_change_to_be_saved: () -> Array[Float?]?
+
+    def lat_in_database: () -> Float?
+
+    def saved_change_to_lat: () -> Array[Float?]?
+
+    def saved_change_to_lat?: () -> bool
+
+    def will_save_change_to_lat?: () -> bool
+
+    def restore_lat!: () -> void
+
+    def clear_lat_change: () -> void
+
+    def lon: () -> Float?
+
+    def lon=: (Float?) -> Float?
+
+    def lon?: () -> bool
+
+    def lon_changed?: () -> bool
+
+    def lon_change: () -> [ Float?, Float? ]
+
+    def lon_will_change!: () -> void
+
+    def lon_was: () -> Float?
+
+    def lon_previously_changed?: () -> bool
+
+    def lon_previous_change: () -> Array[Float?]?
+
+    def lon_previously_was: () -> Float?
+
+    def lon_before_last_save: () -> Float?
+
+    def lon_change_to_be_saved: () -> Array[Float?]?
+
+    def lon_in_database: () -> Float?
+
+    def saved_change_to_lon: () -> Array[Float?]?
+
+    def saved_change_to_lon?: () -> bool
+
+    def will_save_change_to_lon?: () -> bool
+
+    def restore_lon!: () -> void
+
+    def clear_lon_change: () -> void
+
+    def name: () -> String?
+
+    def name=: (String?) -> String?
+
+    def name?: () -> bool
+
+    def name_changed?: () -> bool
+
+    def name_change: () -> [ String?, String? ]
+
+    def name_will_change!: () -> void
+
+    def name_was: () -> String?
+
+    def name_previously_changed?: () -> bool
+
+    def name_previous_change: () -> Array[String?]?
+
+    def name_previously_was: () -> String?
+
+    def name_before_last_save: () -> String?
+
+    def name_change_to_be_saved: () -> Array[String?]?
+
+    def name_in_database: () -> String?
+
+    def saved_change_to_name: () -> Array[String?]?
+
+    def saved_change_to_name?: () -> bool
+
+    def will_save_change_to_name?: () -> bool
+
+    def restore_name!: () -> void
+
+    def clear_name_change: () -> void
+
+    def desc: () -> String?
+
+    def desc=: (String?) -> String?
+
+    def desc?: () -> bool
+
+    def desc_changed?: () -> bool
+
+    def desc_change: () -> [ String?, String? ]
+
+    def desc_will_change!: () -> void
+
+    def desc_was: () -> String?
+
+    def desc_previously_changed?: () -> bool
+
+    def desc_previous_change: () -> Array[String?]?
+
+    def desc_previously_was: () -> String?
+
+    def desc_before_last_save: () -> String?
+
+    def desc_change_to_be_saved: () -> Array[String?]?
+
+    def desc_in_database: () -> String?
+
+    def saved_change_to_desc: () -> Array[String?]?
+
+    def saved_change_to_desc?: () -> bool
+
+    def will_save_change_to_desc?: () -> bool
+
+    def restore_desc!: () -> void
+
+    def clear_desc_change: () -> void
+
+    def average_temp: () -> Float?
+
+    def average_temp=: (Float?) -> Float?
+
+    def average_temp?: () -> bool
+
+    def average_temp_changed?: () -> bool
+
+    def average_temp_change: () -> [ Float?, Float? ]
+
+    def average_temp_will_change!: () -> void
+
+    def average_temp_was: () -> Float?
+
+    def average_temp_previously_changed?: () -> bool
+
+    def average_temp_previous_change: () -> Array[Float?]?
+
+    def average_temp_previously_was: () -> Float?
+
+    def average_temp_before_last_save: () -> Float?
+
+    def average_temp_change_to_be_saved: () -> Array[Float?]?
+
+    def average_temp_in_database: () -> Float?
+
+    def saved_change_to_average_temp: () -> Array[Float?]?
+
+    def saved_change_to_average_temp?: () -> bool
+
+    def will_save_change_to_average_temp?: () -> bool
+
+    def restore_average_temp!: () -> void
+
+    def clear_average_temp_change: () -> void
+
+    def max_temp: () -> Float?
+
+    def max_temp=: (Float?) -> Float?
+
+    def max_temp?: () -> bool
+
+    def max_temp_changed?: () -> bool
+
+    def max_temp_change: () -> [ Float?, Float? ]
+
+    def max_temp_will_change!: () -> void
+
+    def max_temp_was: () -> Float?
+
+    def max_temp_previously_changed?: () -> bool
+
+    def max_temp_previous_change: () -> Array[Float?]?
+
+    def max_temp_previously_was: () -> Float?
+
+    def max_temp_before_last_save: () -> Float?
+
+    def max_temp_change_to_be_saved: () -> Array[Float?]?
+
+    def max_temp_in_database: () -> Float?
+
+    def saved_change_to_max_temp: () -> Array[Float?]?
+
+    def saved_change_to_max_temp?: () -> bool
+
+    def will_save_change_to_max_temp?: () -> bool
+
+    def restore_max_temp!: () -> void
+
+    def clear_max_temp_change: () -> void
+
+    def min_temp: () -> String?
+
+    def min_temp=: (String?) -> String?
+
+    def min_temp?: () -> bool
+
+    def min_temp_changed?: () -> bool
+
+    def min_temp_change: () -> [ String?, String? ]
+
+    def min_temp_will_change!: () -> void
+
+    def min_temp_was: () -> String?
+
+    def min_temp_previously_changed?: () -> bool
+
+    def min_temp_previous_change: () -> Array[String?]?
+
+    def min_temp_previously_was: () -> String?
+
+    def min_temp_before_last_save: () -> String?
+
+    def min_temp_change_to_be_saved: () -> Array[String?]?
+
+    def min_temp_in_database: () -> String?
+
+    def saved_change_to_min_temp: () -> Array[String?]?
+
+    def saved_change_to_min_temp?: () -> bool
+
+    def will_save_change_to_min_temp?: () -> bool
+
+    def restore_min_temp!: () -> void
+
+    def clear_min_temp_change: () -> void
+
+    def float: () -> String?
+
+    def float=: (String?) -> String?
+
+    def float?: () -> bool
+
+    def float_changed?: () -> bool
+
+    def float_change: () -> [ String?, String? ]
+
+    def float_will_change!: () -> void
+
+    def float_was: () -> String?
+
+    def float_previously_changed?: () -> bool
+
+    def float_previous_change: () -> Array[String?]?
+
+    def float_previously_was: () -> String?
+
+    def float_before_last_save: () -> String?
+
+    def float_change_to_be_saved: () -> Array[String?]?
+
+    def float_in_database: () -> String?
+
+    def saved_change_to_float: () -> Array[String?]?
+
+    def saved_change_to_float?: () -> bool
+
+    def will_save_change_to_float?: () -> bool
+
+    def restore_float!: () -> void
+
+    def clear_float_change: () -> void
+
+    def feels_like: () -> Float?
+
+    def feels_like=: (Float?) -> Float?
+
+    def feels_like?: () -> bool
+
+    def feels_like_changed?: () -> bool
+
+    def feels_like_change: () -> [ Float?, Float? ]
+
+    def feels_like_will_change!: () -> void
+
+    def feels_like_was: () -> Float?
+
+    def feels_like_previously_changed?: () -> bool
+
+    def feels_like_previous_change: () -> Array[Float?]?
+
+    def feels_like_previously_was: () -> Float?
+
+    def feels_like_before_last_save: () -> Float?
+
+    def feels_like_change_to_be_saved: () -> Array[Float?]?
+
+    def feels_like_in_database: () -> Float?
+
+    def saved_change_to_feels_like: () -> Array[Float?]?
+
+    def saved_change_to_feels_like?: () -> bool
+
+    def will_save_change_to_feels_like?: () -> bool
+
+    def restore_feels_like!: () -> void
+
+    def clear_feels_like_change: () -> void
+
+    def humidity: () -> Integer?
+
+    def humidity=: (Integer?) -> Integer?
+
+    def humidity?: () -> bool
+
+    def humidity_changed?: () -> bool
+
+    def humidity_change: () -> [ Integer?, Integer? ]
+
+    def humidity_will_change!: () -> void
+
+    def humidity_was: () -> Integer?
+
+    def humidity_previously_changed?: () -> bool
+
+    def humidity_previous_change: () -> Array[Integer?]?
+
+    def humidity_previously_was: () -> Integer?
+
+    def humidity_before_last_save: () -> Integer?
+
+    def humidity_change_to_be_saved: () -> Array[Integer?]?
+
+    def humidity_in_database: () -> Integer?
+
+    def saved_change_to_humidity: () -> Array[Integer?]?
+
+    def saved_change_to_humidity?: () -> bool
+
+    def will_save_change_to_humidity?: () -> bool
+
+    def restore_humidity!: () -> void
+
+    def clear_humidity_change: () -> void
+
+    def cloud_cover: () -> Integer?
+
+    def cloud_cover=: (Integer?) -> Integer?
+
+    def cloud_cover?: () -> bool
+
+    def cloud_cover_changed?: () -> bool
+
+    def cloud_cover_change: () -> [ Integer?, Integer? ]
+
+    def cloud_cover_will_change!: () -> void
+
+    def cloud_cover_was: () -> Integer?
+
+    def cloud_cover_previously_changed?: () -> bool
+
+    def cloud_cover_previous_change: () -> Array[Integer?]?
+
+    def cloud_cover_previously_was: () -> Integer?
+
+    def cloud_cover_before_last_save: () -> Integer?
+
+    def cloud_cover_change_to_be_saved: () -> Array[Integer?]?
+
+    def cloud_cover_in_database: () -> Integer?
+
+    def saved_change_to_cloud_cover: () -> Array[Integer?]?
+
+    def saved_change_to_cloud_cover?: () -> bool
+
+    def will_save_change_to_cloud_cover?: () -> bool
+
+    def restore_cloud_cover!: () -> void
+
+    def clear_cloud_cover_change: () -> void
+
+    def wind_speed: () -> Float?
+
+    def wind_speed=: (Float?) -> Float?
+
+    def wind_speed?: () -> bool
+
+    def wind_speed_changed?: () -> bool
+
+    def wind_speed_change: () -> [ Float?, Float? ]
+
+    def wind_speed_will_change!: () -> void
+
+    def wind_speed_was: () -> Float?
+
+    def wind_speed_previously_changed?: () -> bool
+
+    def wind_speed_previous_change: () -> Array[Float?]?
+
+    def wind_speed_previously_was: () -> Float?
+
+    def wind_speed_before_last_save: () -> Float?
+
+    def wind_speed_change_to_be_saved: () -> Array[Float?]?
+
+    def wind_speed_in_database: () -> Float?
+
+    def saved_change_to_wind_speed: () -> Array[Float?]?
+
+    def saved_change_to_wind_speed?: () -> bool
+
+    def will_save_change_to_wind_speed?: () -> bool
+
+    def restore_wind_speed!: () -> void
+
+    def clear_wind_speed_change: () -> void
+
+    def wind_direction: () -> Integer?
+
+    def wind_direction=: (Integer?) -> Integer?
+
+    def wind_direction?: () -> bool
+
+    def wind_direction_changed?: () -> bool
+
+    def wind_direction_change: () -> [ Integer?, Integer? ]
+
+    def wind_direction_will_change!: () -> void
+
+    def wind_direction_was: () -> Integer?
+
+    def wind_direction_previously_changed?: () -> bool
+
+    def wind_direction_previous_change: () -> Array[Integer?]?
+
+    def wind_direction_previously_was: () -> Integer?
+
+    def wind_direction_before_last_save: () -> Integer?
+
+    def wind_direction_change_to_be_saved: () -> Array[Integer?]?
+
+    def wind_direction_in_database: () -> Integer?
+
+    def saved_change_to_wind_direction: () -> Array[Integer?]?
+
+    def saved_change_to_wind_direction?: () -> bool
+
+    def will_save_change_to_wind_direction?: () -> bool
+
+    def restore_wind_direction!: () -> void
+
+    def clear_wind_direction_change: () -> void
+
+    def wind_gust: () -> Float?
+
+    def wind_gust=: (Float?) -> Float?
+
+    def wind_gust?: () -> bool
+
+    def wind_gust_changed?: () -> bool
+
+    def wind_gust_change: () -> [ Float?, Float? ]
+
+    def wind_gust_will_change!: () -> void
+
+    def wind_gust_was: () -> Float?
+
+    def wind_gust_previously_changed?: () -> bool
+
+    def wind_gust_previous_change: () -> Array[Float?]?
+
+    def wind_gust_previously_was: () -> Float?
+
+    def wind_gust_before_last_save: () -> Float?
+
+    def wind_gust_change_to_be_saved: () -> Array[Float?]?
+
+    def wind_gust_in_database: () -> Float?
+
+    def saved_change_to_wind_gust: () -> Array[Float?]?
+
+    def saved_change_to_wind_gust?: () -> bool
+
+    def will_save_change_to_wind_gust?: () -> bool
+
+    def restore_wind_gust!: () -> void
+
+    def clear_wind_gust_change: () -> void
+
+    def created_at: () -> ActiveSupport::TimeWithZone
+
+    def created_at=: (ActiveSupport::TimeWithZone) -> ActiveSupport::TimeWithZone
+
+    def created_at?: () -> bool
+
+    def created_at_changed?: () -> bool
+
+    def created_at_change: () -> [ ActiveSupport::TimeWithZone?, ActiveSupport::TimeWithZone? ]
+
+    def created_at_will_change!: () -> void
+
+    def created_at_was: () -> ActiveSupport::TimeWithZone?
+
+    def created_at_previously_changed?: () -> bool
+
+    def created_at_previous_change: () -> Array[ActiveSupport::TimeWithZone?]?
+
+    def created_at_previously_was: () -> ActiveSupport::TimeWithZone?
+
+    def created_at_before_last_save: () -> ActiveSupport::TimeWithZone?
+
+    def created_at_change_to_be_saved: () -> Array[ActiveSupport::TimeWithZone?]?
+
+    def created_at_in_database: () -> ActiveSupport::TimeWithZone?
+
+    def saved_change_to_created_at: () -> Array[ActiveSupport::TimeWithZone?]?
+
+    def saved_change_to_created_at?: () -> bool
+
+    def will_save_change_to_created_at?: () -> bool
+
+    def restore_created_at!: () -> void
+
+    def clear_created_at_change: () -> void
+
+    def updated_at: () -> ActiveSupport::TimeWithZone
+
+    def updated_at=: (ActiveSupport::TimeWithZone) -> ActiveSupport::TimeWithZone
+
+    def updated_at?: () -> bool
+
+    def updated_at_changed?: () -> bool
+
+    def updated_at_change: () -> [ ActiveSupport::TimeWithZone?, ActiveSupport::TimeWithZone? ]
+
+    def updated_at_will_change!: () -> void
+
+    def updated_at_was: () -> ActiveSupport::TimeWithZone?
+
+    def updated_at_previously_changed?: () -> bool
+
+    def updated_at_previous_change: () -> Array[ActiveSupport::TimeWithZone?]?
+
+    def updated_at_previously_was: () -> ActiveSupport::TimeWithZone?
+
+    def updated_at_before_last_save: () -> ActiveSupport::TimeWithZone?
+
+    def updated_at_change_to_be_saved: () -> Array[ActiveSupport::TimeWithZone?]?
+
+    def updated_at_in_database: () -> ActiveSupport::TimeWithZone?
+
+    def saved_change_to_updated_at: () -> Array[ActiveSupport::TimeWithZone?]?
+
+    def saved_change_to_updated_at?: () -> bool
+
+    def will_save_change_to_updated_at?: () -> bool
+
+    def restore_updated_at!: () -> void
+
+    def clear_updated_at_change: () -> void
+  end
+  include GeneratedAttributeMethods
+
+  module GeneratedRelationMethods
+  end
+
+  class ActiveRecord_Relation < ::ActiveRecord::Relation
+    include GeneratedRelationMethods
+    include _ActiveRecord_Relation[Weather, Integer]
+    include Enumerable[Weather]
+  end
+
+  class ActiveRecord_Associations_CollectionProxy < ::ActiveRecord::Associations::CollectionProxy
+    include GeneratedRelationMethods
+    include _ActiveRecord_Relation[Weather, Integer]
+  end
+end

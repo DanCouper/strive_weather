@@ -1,0 +1,35 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  dt: MyString
+  lat: 1.5
+  lon: 1.5
+  name: MyString
+  desc: MyString
+  average_temp: 1.5
+  max_temp: 1.5
+  min_temp: MyString
+  float: MyString
+  feels_like: 1.5
+  humidity: 1
+  cloud_cover: 1
+  wind_speed: 1.5
+  wind_direction: 1
+  wind_gust: 1.5
+
+two:
+  dt: MyString
+  lat: 1.5
+  lon: 1.5
+  name: MyString
+  desc: MyString
+  average_temp: 1.5
+  max_temp: 1.5
+  min_temp: MyString
+  float: MyString
+  feels_like: 1.5
+  humidity: 1
+  cloud_cover: 1
+  wind_speed: 1.5
+  wind_direction: 1
+  wind_gust: 1.5
