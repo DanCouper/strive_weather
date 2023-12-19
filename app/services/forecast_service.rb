@@ -142,44 +142,34 @@ require "json"
 # end
 # ```
 class ForecastService
-  attr_reader :normalised_req_time
-
-  def initialize(requests_per_day = 8)
-    @cache_times = calculate_cache_times(requests_per_day)
-    @normalised_req_time = nil
-
+  def initialize
     # Set up the Faraday connection object for making external HTTP requests.
     @conn = Faraday.new(init_options) do |faraday|
       faraday.response(:logger, Rails.logger, log_level: :debug)
     end
   end
 
-  def call(lat, lon)
-    # The data structure constructed by the service object is a list of weather
-    # objects. These are for intervals of time at a specific location. Because the
-    # request time is not going to be at one of those times, need to shift it
-    # *down* to the last interval.
-    @normalised_req_time = @cache_times.min_by { |time| (DateTime.now.new_offset(0) - time).abs }
-
+  def call(lat, lon, normalised_req_time)
+    response = nil
     # The initial datetime of the data is the value is cached: if the datetime 
     # in the cache matches this initial datetime, can skip everything: the data
     # is already present.
     target_cache_key = "forecast/#{lat}/#{lon}"
-    target_cache_value = @normalised_req_time.to_s
+    target_cache_value = normalised_req_time.to_s
 
     if Rails.cache.fetch(target_cache_key) == target_cache_value
       Rails.logger.info("Weather data update for latitude #{lat} longitude #{lon} skipped, data is already present in database.")
     else
-      case fetch_data(@normalised_req_time, lat, lon)
+      case fetch_combined_data(normalised_req_time, lat, lon)
         in { data: Array => data }
-          Weather.upsert_all(data)
-          Rails.logger.info("Weather data successfully updated for latitude #{lat}, longitude #{lon}, starting at #{@normalised_req_time}")
+          response = data
           Rails.cache.write(target_cache_key, target_cache_value)
-          Rails.logger.info("Cache updated for latitude #{lat}, longitude #{lon}. Set to #{target_cache_value}")
         in { err: String => err_msg}
           Rails.logger.debug("No cache key present, but the data update has failed: #{err_msg}")
       end
     end
+
+    response
   end
 
   private
@@ -199,18 +189,9 @@ class ForecastService
     }
   end
 
-  # The forecast by default provides 8 daily records: 00:00, 03:00, 06:00,
-  # 09:00, 12:00, 15:00, 18:00, and 21:00 Move the request DateTime back to one
-  # of these time to allow checking or writing to the cache.
-  def calculate_cache_times(req_per_day)
-    interval = (24 / req_per_day).to_f
-    start_time = DateTime.parse("00:00")
 
-    (0...req_per_day).map { |i| start_time + Rational(interval * i, 24) }
-  end
-
-  def fetch_data(initial_dt, lat, lon)
-    response = { data: nil, err: nil, success?: false }
+  def fetch_combined_data(initial_dt, lat, lon)
+    response = { data: nil, err: nil }
 
     case [fetch_data_for("weather", lat, lon), fetch_data_for("forecast", lat, lon)]
     in [{ data: Hash => curr_data}, {data: Hash => forecast_data}]
@@ -218,7 +199,6 @@ class ForecastService
       rest_entries = forecast_data["list"].map { |data| weather(data["dt_txt"], lat, lon, data) }
 
       response[:data] =  initial_entry + rest_entries
-      response[:success] = true;
 
     in [{ err: String => current_err_msg }, _]
       response[:err] = <<~EOS

@@ -7,16 +7,16 @@
             <h2 class="panel-title">
                 <%= @office[:municipality] %>, <%= @office[:country] %>
             </h2>
-            <p class="office-localtime panel-subtitle"><time datetime="<%= office.current_weather[:dt] %>">
-                    <%= office.current_weather[:dt] %>
+            <p class="office-localtime panel-subtitle"><time datetime="<%= @office.current_weather[:dt] %>">
+                    <%= @office.current_weather[:dt] %>
                 </time></p>
         </header>
         <div class="panel-content weather-summary">
             <p class="office-weather-desc">
-                <%= office.current_weather[:name] %>
+                <%= @office.current_weather[:name] %>
             </p>
             <p class="office-weather-temp">
-                <%= office.current_weather[:average_temp] %>°c
+                <%= @office.current_weather[:average_temp] %>°c
             </p>
         </div>
     </section>
@@ -26,154 +26,30 @@
             <h2 class="panel-title">Four-day forecast</h2>
         </header>
         <tab-interface>
-            <button slot="tab"><time datetime="2023-12-11T15:51:04Z" is="relative-day">Today</time></button>
-            <div slot="tabpanel">
-                <ul role="list">
-                    <li>
-                        <p><time datetime="2023-12-07T15:51:04Z">15:51 Thursday, 7th December</time></p>
-                        <p><span>Raining</span>, <data>7°c</data></p>
-                    </li>
-                    <li>
-                        <p><time datetime="2023-12-07T15:51:04Z">15:51 Thursday, 7th December</time></p>
-                        <p><span>Raining</span>, <data>7°c</data></p>
-                    </li>
-                    <li>
-                        <p><time datetime="2023-12-07T15:51:04Z">15:51 Thursday, 7th December</time></p>
-                        <p><span>Raining</span>, <data>7°c</data></p>
-                    </li>
-                    <li>
-                        <p><time datetime="2023-12-07T15:51:04Z">15:51 Thursday, 7th December</time></p>
-                        <p><span>Raining</span>, <data>7°c</data></p>
-                    </li>
-                    <li>
-                        <p><time datetime="2023-12-07T15:51:04Z">15:51 Thursday, 7th December</time></p>
-                        <p><span>Raining</span>, <data>7°c</data></p>
-                    </li>
-                    <li>
-                        <p><time datetime="2023-12-07T15:51:04Z">15:51 Thursday, 7th December</time></p>
-                        <p><span>Raining</span>, <data>7°c</data></p>
-                    </li>
-                    <li>
-                        <p><time datetime="2023-12-07T15:51:04Z">15:51 Thursday, 7th December</time></p>
-                        <p><span>Raining</span>, <data>7°c</data></p>
-                    </li>
-                    <li>
-                        <p><time datetime="2023-12-07T15:51:04Z">15:51 Thursday, 7th December</time></p>
-                        <p><span>Raining</span>, <data>7°c</data></p>
-                    </li>
-                </ul>
-            </div>
-            <button slot="tab"><time datetime="2023-12-12T15:51:04Z" is="relative-day">Tomorrow</time></button>
-            <div slot="tabpanel">
-                <ul role="list">
-                    <li>
-                        <p><time datetime="2023-12-07T15:51:04Z">15:51 Friday, 8th December</time></p>
-                        <p><span>Raining</span>, <data>7°c</data></p>
-                    </li>
-                    <li>
-                        <p><time datetime="2023-12-07T15:51:04Z">15:51 Friday, 8th December</time></p>
-                        <p><span>Raining</span>, <data>7°c</data></p>
-                    </li>
-                    <li>
-                        <p><time datetime="2023-12-07T15:51:04Z">15:51 Friday, 8th December</time></p>
-                        <p><span>Raining</span>, <data>7°c</data></p>
-                    </li>
-                    <li>
-                        <p><time datetime="2023-12-07T15:51:04Z">15:51 Friday, 8th December</time></p>
-                        <p><span>Raining</span>, <data>7°c</data></p>
-                    </li>
-                    <li>
-                        <p><time datetime="2023-12-07T15:51:04Z">15:51 Friday, 8th December</time></p>
-                        <p><span>Raining</span>, <data>7°c</data></p>
-                    </li>
-                    <li>
-                        <p><time datetime="2023-12-07T15:51:04Z">15:51 Friday, 8th December</time></p>
-                        <p><span>Raining</span>, <data>7°c</data></p>
-                    </li>
-                    <li>
-                        <p><time datetime="2023-12-07T15:51:04Z">15:51 Friday, 8th December</time></p>
-                        <p><span>Raining</span>, <data>7°c</data></p>
-                    </li>
-                    <li>
-                        <p><time datetime="2023-12-07T15:51:04Z">15:51 Friday, 8th December</time></p>
-                        <p><span>Raining</span>, <data>7°c</data></p>
-                    </li>
-                </ul>
-            </div>
-            <button slot="tab"><time datetime="2023-12-13T15:51:04Z" is="relative-day">Wednesday</time></button>
-            <div slot="tabpanel">
-                <ul role="list">
-                    <li>
-                        <p><time datetime="2023-12-07T15:51:04Z">15:51 Saturday, 9th December</time></p>
-                        <p><span>Raining</span>, <data>7°c</data></p>
-                    </li>
-                    <li>
-                        <p><time datetime="2023-12-07T15:51:04Z">15:51 Saturday, 9th December</time></p>
-                        <p><span>Raining</span>, <data>7°c</data></p>
-                    </li>
-                    <li>
-                        <p><time datetime="2023-12-07T15:51:04Z">15:51 Saturday, 9th December</time></p>
-                        <p><span>Raining</span>, <data>7°c</data></p>
-                    </li>
-                    <li>
-                        <p><time datetime="2023-12-07T15:51:04Z">15:51 Saturday, 9th December</time></p>
-                        <p><span>Raining</span>, <data>7°c</data></p>
-                    </li>
-                    <li>
-                        <p><time datetime="2023-12-07T15:51:04Z">15:51 Saturday, 9th December</time></p>
-                        <p><span>Raining</span>, <data>7°c</data></p>
-                    </li>
-                    <li>
-                        <p><time datetime="2023-12-07T15:51:04Z">15:51 Saturday, 9th December</time></p>
-                        <p><span>Raining</span>, <data>7°c</data></p>
-                    </li>
-                    <li>
-                        <p><time datetime="2023-12-07T15:51:04Z">15:51 Saturday, 9th December</time></p>
-                        <p><span>Raining</span>, <data>7°c</data></p>
-                    </li>
-                    <li>
-                        <p><time datetime="2023-12-07T15:51:04Z">15:51 Saturday, 9th December</time></p>
-                        <p><span>Raining</span>, <data>7°c</data></p>
-                    </li>
-                </ul>
-            </div>
-            <button slot="tab"><time datetime="2023-12-14T15:51:04Z" is="relative-day">Thursday</time></button>
-            <div slot="tabpanel">
-                <ul role="list">
-                    <li>
-                        <p><time datetime="2023-12-07T15:51:04Z">15:51 Sunday, 10th December</time></p>
-                        <p><span>Raining</span>, <data>7°c</data></p>
-                    </li>
-                    <li>
-                        <p><time datetime="2023-12-07T15:51:04Z">15:51 Sunday, 10th December</time></p>
-                        <p><span>Raining</span>, <data>7°c</data></p>
-                    </li>
-                    <li>
-                        <p><time datetime="2023-12-07T15:51:04Z">15:51 Sunday, 10th December</time></p>
-                        <p><span>Raining</span>, <data>7°c</data></p>
-                    </li>
-                    <li>
-                        <p><time datetime="2023-12-07T15:51:04Z">15:51 Sunday, 10th December</time></p>
-                        <p><span>Raining</span>, <data>7°c</data></p>
-                    </li>
-                    <li>
-                        <p><time datetime="2023-12-07T15:51:04Z">15:51 Sunday, 10th December</time></p>
-                        <p><span>Raining</span>, <data>7°c</data></p>
-                    </li>
-                    <li>
-                        <p><time datetime="2023-12-07T15:51:04Z">15:51 Sunday, 10th December</time></p>
-                        <p><span>Raining</span>, <data>7°c</data></p>
-                    </li>
-                    <li>
-                        <p><time datetime="2023-12-07T15:51:04Z">15:51 Sunday, 10th December</time></p>
-                        <p><span>Raining</span>, <data>7°c</data></p>
-                    </li>
-                    <li>
-                        <p><time datetime="2023-12-07T15:51:04Z">15:51 Sunday, 10th December</time></p>
-                        <p><span>Raining</span>, <data>7°c</data></p>
-                    </li>
-                </ul>
-            </div>
+            <% @office.forecast.in_groups_of(8).each do |forecast_days| %>
+                <button slot="tab"><time datetime="<%= forecast_days[0][:dt] %>" is="relative-day">
+                        <%= forecast_days[0][:dt] %>
+                    </time></button>
+                <div slot="tabpanel">
+                    <ul role="list">
+                        <% forecast_days.each do |weather| %>
+                            <li>
+                        <% if false %>
+                                <p><time datetime="<%= weather[:dt] %>">
+                                        <%= weather[:dt] %>
+                                    </time></p>
+                                <p><span>
+                                        <%= weather[:name] %>
+                                    </span>, <data>
+                                        <%= weather[:average_temp] %>
+                                    </data></p>
+                        <% end %>
+                        <%= weather.inspect %>
+                            </li>
+                        <% end %>
+                    </ul>
+                </div>
+                <% end %>
         </tab-interface>
     </section>
 </main>
