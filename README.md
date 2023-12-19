@@ -18,6 +18,21 @@ use of the OpenWeatherMap API (API key + office locations provided in test).
 - A11y. I would want dev-side testing in place and running on my machine at 
   minimum.
 
+## Overview Notes
+
+- Two routes, one an index of all offices, then a page for each office.
+- The index shows a summary of the current weather at each office.
+- The individual pages show the summary + a four-day forecast. _n.b. this is
+  incorrect, the forecast needs to be padded up until the first available
+  timestamp._
+- There are two tables, `office` and `weather`.
+- Office rows store lat/lon as well as basic info, they are keyed with an id,
+  which is used in the route (`offices/1` _&c_).
+- Weather rows store dta pulled from the Open Weather Map API, and are keyed
+  with lat/lon/datetime.
+- The requests to the OWM API are cached by lat/lon, storing the time of the request.
+- If the cache value doesn't match a request for an office, then a request is made
+  and the db is updated.
 
 ## Setup Notes
 
@@ -49,7 +64,14 @@ gem install
 Once installed, seed the database:
 
 ```
+rails db:migrate
 rails db:seed
+```
+
+(alternatively if it's a previous version or whatever)
+
+```
+rails db:drop && rails db:create && rails db:migrate && rails db:seed
 ```
 
 Then start:
@@ -286,21 +308,21 @@ approach, but Rails will actively get in the way of this.
    24 API requests to Open Weather Map a day.
 
 - [x] Fixture for API response to request for forecast data.
-- [ ] Model for Weather
+- [x] Model for Weather (note weather `belongs_to` office)
 - [ ] Refactor service object
-    - [ ] Service object should have a single method
-    - [ ] Purpose should be to make a request to OWM API, parsing the response
+    - [x] Service object should have a single method
+    - [x] Purpose should be to make a request to OWM API, parsing the response
           to match the structure expected by the model.
-    - [ ] Should make a request to a single endpoint, just to `forecast` or `weather`
-    - [ ] Should use `Proc#call`
-    - [ ] The model should be 
 - [x] Ensure API responses are metric (missed this on first pass).
-- [ ] On application boot, make request to *forecast* API for each location.
-- [ ] Add cron functionality to rerun request at three hour intervals.
-- [ ] Intervals should be 00:00, 03:00, 06:00, 09:00, 12:00, 15:00, 18:00, 21:00
-- [ ] The job should clear any records with a timestamp > 24 hours to current time.
-- [ ] Add model call in offices controller to grab forecast.
-- [ ] Replace dummied data with actual weather data.
+- [x] Make two calls, one for current & one for forecast, return combined data.
+- [x] Use that data to *update* the Weather table.
+- [x] Weather table should use lat/lon/time as the key.
+- [x] Intervals for forecast 00:00, 03:00, 06:00, 09:00, 12:00, 15:00, 18:00, 21:00.
+      Because of this, the current weather times won't match. So adjust the *stored*
+      time when a request comes in to match the previous interval time.
+- [x] Can now use this lat/lon/time to cache whether the request (and subsequent
+      update) should occur.
+
 
 ### Notes: weather table
 
@@ -347,8 +369,7 @@ https://api.openweathermap.org/data/2.5/forecast?appid={API_KEY}&lat=54.97125&lo
 This is from the forecast response, so is one of a list of 40, and the
 location data is a field at the the same level as the list.
 
-`dt` is UNIX epoch. I do not need precision here, only date and hour.
-
+`dt` is UNIX epoch. Note I do not need precision here, only date and hour.
 
 For a quick summary, I need `temp` and the `description` from the `weather` field.
 
